@@ -2,7 +2,7 @@ import { defineConfig } from 'orval';
 
 // The only thing shared with cbd-payments-service: its committed contract, at
 // a tag. Upgrading is a one-line PR that changes this version.
-const PAYMENTS_CONTRACT = 'v1.0.0';
+const PAYMENTS_CONTRACT = 'v2.0.0-beta.1';
 
 export default defineConfig({
   payments: {
