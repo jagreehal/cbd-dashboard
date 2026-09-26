@@ -27,3 +27,5 @@ A breaking contract turns that PR red here, before anything ships.
 
 Consumers fetch committed artifacts over HTTPS at a pinned tag. The
 aggregators find publishers by the `cbd-publisher` GitHub topic.
+
+The pattern and the argument behind it: [convention-based-design](https://github.com/jagreehal/convention-based-design).
