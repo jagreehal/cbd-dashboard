@@ -1,0 +1,31 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # Regenerates the client from the payments contract at the tag pinned in
+  # orval.config.ts, then typechecks. Bumping that tag is how this repo adopts
+  # a new contract, and a breaking one fails here, in this repo's own PR.
+  client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run generate
+      - name: committed client matches the pinned contract
+        run: git diff --exit-code src/generated
+      - run: pnpm run check
+
+  # The docs convention and its checker belong to cbd-handbook. Pinned, so a
+  # change to the convention reaches this repo as a version bump, not a surprise.
+  docs:
+    uses: jagreehal/cbd-handbook/.github/workflows/check-docs.yml@v1.0.0
+    with:
+      handbook-ref: v1.0.0
