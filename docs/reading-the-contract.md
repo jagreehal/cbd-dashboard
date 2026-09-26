@@ -7,9 +7,9 @@ related: [cbd-payments-service/contract-reach, cbd-handbook/repository-layout]
 
 # Reading the payments contract from the dashboard
 
-The dashboard never imports a type from the payments service. It reads
+The dashboard never imports a type from the payments service. Orval reads
 `contracts/openapi.json` from `cbd-payments-service` at the tag pinned in
-`orval.config.ts`, and generates a client from it.
+`orval.config.ts` and generates a client from it.
 
 ```sh
 pnpm run generate   # orval fetches the artifact at the pinned tag

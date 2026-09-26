@@ -21,10 +21,10 @@ from the payments platform team.
 
 ## Working with us
 
-The dashboard reads `contracts/openapi.json` from `cbd-payments-service` at a
-pinned tag and generates its client from it. We do not hand-write request or
-response types, so a change to the payments API reaches us as a pull request
-that bumps the tag, and a failing typecheck if the change breaks us.
+We generate the dashboard client from `contracts/openapi.json` in
+`cbd-payments-service`, at a pinned tag. We write no request or response types
+by hand. A payments API change reaches us when someone opens a pull request
+that bumps the tag, and the typecheck fails there if the change breaks us.
 
 If you are changing that contract, you do not need to wait for us. Add fields
 freely. For a rename or a removal, give us a release to move first and say so
